@@ -11,7 +11,7 @@
     <div class="genres">
       <button *ngFor="let genre of genres" class="genre-btn" (click)="onGenreClick(genre)">
         <span class="icon">
-          <i class="{{ getGenreIcon(genre) }}"></i> <!-- Dynamically set icon -->
+          <i class="{{ getGenreIcon(genre) }}"></i> 
         </span>
         {{ genre }}
         <span class="arrow">🡲</span>

@@ -24,7 +24,7 @@ export class BooksComponent {
 
   ngOnInit() {
     this.selectedGenre = this.route.snapshot.paramMap.get('genre') || '';
-    this.fetchBooks(true);  // ✅ Fetch books on load
+    this.fetchBooks(true);  //  Fetch books on load
   }
 
   fetchBooks(reset: boolean = false) {
@@ -41,7 +41,7 @@ export class BooksComponent {
       topic: this.selectedGenre,
       page: this.currentPage,
       search: this.searchQuery.trim() || undefined,
-      mime_type: 'image/jpeg' // ✅ Fetch only books with covers
+      mime_type: 'image/jpeg' //  Fetch only books with covers
     };
 
     Object.keys(params).forEach((key) => {
@@ -70,7 +70,7 @@ export class BooksComponent {
       });
   }
 
-  // ✅ Infinite Scroll
+  //  Infinite Scroll
   @HostListener('window:scroll', [])
   onScroll(): void {
     if (this.loading || !this.hasNextPage) return;
@@ -85,7 +85,7 @@ export class BooksComponent {
     }
   }
 
-  // ✅ Search Books with Debounce
+  //  Search Books with Debounce
   searchBooks(event: any) {
     const query = event.target.value.trim();
     this.searchQuery = query;
@@ -96,14 +96,14 @@ export class BooksComponent {
     }, 500);
   }
 
-  // ✅ Clear Search
+  //  Clear Search
   clearSearch(input: HTMLInputElement) {
     input.value = '';
     this.searchQuery = '';
     this.fetchBooks(true);
   }
 
-  // ✅ Open Book in Preferred Format
+  //  Open Book in Preferred Format
   openBook(book: any) {
     if (book.readable_format) {
       window.open(book.readable_format, '_blank');
