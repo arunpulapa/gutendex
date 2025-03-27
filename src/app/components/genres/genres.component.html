@@ -1,0 +1,21 @@
+<div class="container">
+    <!-- Header -->
+    <header >
+      <h1 class="title">Gutenberg Project</h1>
+      <p class="subtitle">
+        A social cataloging website that allows you to freely search its database of books, annotations, and reviews.
+      </p>
+    </header>
+  
+    <!-- Genre Buttons -->
+    <div class="genres">
+      <button *ngFor="let genre of genres" class="genre-btn" (click)="onGenreClick(genre)">
+        <span class="icon">
+          <i class="{{ getGenreIcon(genre) }}"></i> <!-- Dynamically set icon -->
+        </span>
+        {{ genre }}
+        <span class="arrow">🡲</span>
+      </button>
+    </div>
+  </div>
+  

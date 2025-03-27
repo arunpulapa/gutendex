@@ -1,0 +1,54 @@
+
+<div class="container">
+    <div class="centyeralign">
+        <div style="margin-bottom: 20px; color: #5E56E7;">
+            <button class="back-btn" (click)="goBack()">← {{ selectedGenre }}</button>
+        </div>
+
+        <div class="search-bar">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search" (input)="searchBooks($event)" #searchInput />
+            <span class="clear-icon" *ngIf="searchQuery" (click)="clearSearch(searchInput)">✖</span>
+        </div>          
+    </div>
+
+    <!-- Display Total Records -->
+    <div class="total-records-container">
+        <span class="book-icon">📚</span>
+        <p>Total Books: <strong>{{ totalRecords }}</strong></p>
+        <hr />
+    </div>
+
+    <!-- Loader -->
+    <div *ngIf="loading" class="loader-container">
+        <div class="loader"></div>
+    </div>
+
+    <!-- No Books Found Message -->
+    <div *ngIf="!loading && books.length === 0" class="no-books">No books found</div>
+
+    <!-- Books List with Infinite Scroll -->
+    <div class="books-list" style="background: #F8F7FF;">
+        <div *ngFor="let book of books" class="book-item" (click)="openBook(book)">
+            <img [src]="book.cover_url" *ngIf="book.cover_url" class="book-cover" />
+            <h3 class="expand-title">{{ book.title }}</h3>
+            <p class="book-author">{{ book.authorNames }}</p>
+        </div>
+    </div>
+
+    <!-- Bottom Loader for Infinite Scroll -->
+    <div *ngIf="loadingMore" class="bottom-loader-container">
+        <div class="loader2"></div>
+    </div>
+</div>
+
+     
+     <!-- <button (click)="prevPage()" [disabled]="currentPage === 1 || loading" class="pagination-btn">
+            ◀ Previous
+        </button>
+        <span class="page-number">Page {{ currentPage }} of {{ totalPages }}</span>
+        <button (click)="nextPage()" [disabled]="!hasNextPage || loading" class="pagination-btn">
+            Next ▶
+        </button> -->
+
+      
